@@ -4,7 +4,7 @@ This is the frontend React JS client that makes use of the **amazingstore-apis**
 
 ### Tools & Frameworks Used
 
-Below are tools & frameworks used in creating the backend APIs:
+Below are tools & frameworks used in creating this project:
 
 - React 16.13+
 - React Router
