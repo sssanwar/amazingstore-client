@@ -29,6 +29,7 @@ Please follow these steps to run this project locally:
 
 1. Clone or download this project
 2. Install yarn
-3. Go to the directory and type in **yarn start**
-4. The frontend can now be loaded in browser at http://localhost:3000
-5. Please make sure the backend is already running before running this client
+3. Go to the project directory and type in **yarn install** to install packages
+4. Type in **yarn start** to start the project
+5. The frontend can now be loaded in a browser at http://localhost:3000
+6. Please make sure the backend API project is already running before running this client
