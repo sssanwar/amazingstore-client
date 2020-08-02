@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 import { Product, CartItem, TotalSum } from '../../lib/types/common.type'
 import update from 'immutability-helper'
-import { StateObservable } from 'redux-observable'
 
 export interface AppState {
   products: Product[]
