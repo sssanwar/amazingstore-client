@@ -1,0 +1,12 @@
+.amount-label {
+  font-weight: bold;
+  display: inline-block;
+  text-align: right;
+  width: 200px;
+}
+
+.amount-value {
+  text-align: right;
+  display: inline-block;
+  width: 150px;
+}
