@@ -25,6 +25,7 @@ const appSlice = createSlice<AppState, SliceCaseReducers<AppState>, string>({
     updateCartItem: (state: AppState, action: PayloadAction<CartItem>) => {
       state.totalSum = undefined
       if (action.payload.quantity < 0) return
+
       const itemIndex = state.cartItems.findIndex(i => i.productId === action.payload.productId)
       if (itemIndex >= 0) {
         state.cartItems = update(state.cartItems, { [itemIndex]: { quantity: { $set: action.payload.quantity } } })

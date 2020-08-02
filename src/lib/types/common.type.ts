@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    appConfig: any
+  }
+}
+
 export type Product = {
   id: number
   name: string

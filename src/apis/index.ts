@@ -3,7 +3,7 @@ import stringifyObject from 'stringify-object'
 import { CartItem } from '../lib/types/common.type'
 
 const sendQuery = (query: string) => {
-  return axios.post('http://localhost:3100/dev/api/v1/graphql', JSON.stringify({ query: query }), {
+  return axios.post(window.appConfig['endpointUrl'] + 'api/v1/graphql', JSON.stringify({ query: query }), {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json'
