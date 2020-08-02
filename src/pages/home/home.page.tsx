@@ -8,11 +8,12 @@ export default function HomePage(props: {
   products: Product[]
   cartItems: CartItem[]
   totalSum?: TotalSum
+  loadingState?: string
   onRetrieveProducts: () => void
   onUpdateCartItem: (item: CartItem) => void
   onCheckout: (items: CartItem[]) => void
 }) {
-  const { products, cartItems, totalSum, onRetrieveProducts, onUpdateCartItem, onCheckout } = props
+  const { products, cartItems, totalSum, loadingState, onRetrieveProducts, onUpdateCartItem, onCheckout } = props
 
   const handleCheckout = () => onCheckout(cartItems)
 
@@ -36,8 +37,14 @@ export default function HomePage(props: {
       </p>
       <ProductTable products={products} cartItems={cartItems} onUpdateCartItem={onUpdateCartItem} />
       <Box mt={2} style={{ textAlign: 'right' }}>
-        <Button variant="contained" color="primary" onClick={handleCheckout}>
-          Calculate Total
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ width: 200 }}
+          disabled={loadingState !== undefined}
+          onClick={handleCheckout}
+        >
+          {loadingState || 'Calculate Total'}
         </Button>
       </Box>
       {totalSum && (

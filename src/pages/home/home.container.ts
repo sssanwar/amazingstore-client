@@ -13,7 +13,8 @@ const mapDispatch = (dispatch: any) => ({
 const mapState = (state: RootState) => ({
   products: state.appReducer.products,
   cartItems: state.appReducer.cartItems,
-  totalSum: state.appReducer.totalSum
+  totalSum: state.appReducer.totalSum,
+  loadingState: state.appReducer.loadingState
 })
 
 export default connect(mapState, mapDispatch)(HomePage)

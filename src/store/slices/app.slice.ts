@@ -1,17 +1,20 @@
 import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 import { Product, CartItem, TotalSum } from '../../lib/types/common.type'
 import update from 'immutability-helper'
+import { StateObservable } from 'redux-observable'
 
 export interface AppState {
   products: Product[]
   cartItems: CartItem[]
   totalSum?: TotalSum
+  loadingState?: string
 }
 
 const initialState: AppState = {
   products: [],
   cartItems: [],
-  totalSum: undefined
+  totalSum: undefined,
+  loadingState: undefined
 }
 
 const appSlice = createSlice<AppState, SliceCaseReducers<AppState>, string>({
@@ -33,9 +36,12 @@ const appSlice = createSlice<AppState, SliceCaseReducers<AppState>, string>({
         state.cartItems = update(state.cartItems, { $push: [action.payload] })
       }
     },
-    calculateTotal: () => {},
+    calculateTotal: (state: AppState) => {
+      state.loadingState = 'Processing...'
+    },
     calculateTotalDone: (state: AppState, action: PayloadAction<any>) => {
       state.totalSum = action.payload.data.updateCart
+      state.loadingState = undefined
     }
   }
 })
