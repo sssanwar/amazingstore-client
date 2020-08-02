@@ -12,7 +12,8 @@ const sendQuery = (query: string) => {
 }
 
 export const getProducts = () => sendQuery('{ products { name, id, unitPrice, promotions { id, description } } }')
+
 export const calculateTotal = (cartItems: CartItem[]) => {
-  let query = `mutation { updateCart(items: {cartItems}) { subTotal, saved, details, total } }`
+  const query = `mutation { updateCart(items: {cartItems}) { subTotal, saved, details, total } }`
   return sendQuery(query.replace('{cartItems}', stringifyObject(cartItems, { singleQuotes: false })))
 }
