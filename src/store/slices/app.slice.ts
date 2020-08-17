@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 import { Product, CartItem, TotalSum } from '../../lib/types/common.type'
-import update from 'immutability-helper'
 
 export interface AppState {
   products: Product[]
@@ -28,11 +27,12 @@ const appSlice = createSlice<AppState, SliceCaseReducers<AppState>, string>({
       state.totalSum = undefined
       if (action.payload.quantity < 0) return
 
-      const itemIndex = state.cartItems.findIndex(i => i.productId === action.payload.productId)
-      if (itemIndex >= 0) {
-        state.cartItems = update(state.cartItems, { [itemIndex]: { quantity: { $set: action.payload.quantity } } })
+      const item = state.cartItems.find(i => i.productId === action.payload.productId)
+
+      if (item) {
+        item.quantity = action.payload.quantity
       } else {
-        state.cartItems = update(state.cartItems, { $push: [action.payload] })
+        state.cartItems.push(action.payload)
       }
     },
     calculateTotal: (state: AppState) => {
